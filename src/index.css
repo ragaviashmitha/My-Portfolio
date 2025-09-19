@@ -1,0 +1,216 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Portfolio Design System - Violet Blue Theme */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Base colors - Deep violet to blue theme */
+    --background: 250 30% 8%;
+    --foreground: 240 20% 95%;
+
+    /* Card system */
+    --card: 250 25% 12%;
+    --card-foreground: 240 20% 95%;
+    --card-accent: 250 25% 15%;
+
+    /* Primary - Vibrant violet */
+    --primary: 270 70% 60%;
+    --primary-foreground: 240 20% 95%;
+    --primary-glow: 270 70% 70%;
+
+    /* Secondary - Soft blue */
+    --secondary: 220 60% 55%;
+    --secondary-foreground: 240 20% 95%;
+
+    /* Accent - Golden highlight */
+    --accent: 45 90% 65%;
+    --accent-foreground: 250 30% 8%;
+
+    /* Muted tones */
+    --muted: 250 20% 20%;
+    --muted-foreground: 240 15% 65%;
+
+    /* Border and inputs */
+    --border: 250 20% 20%;
+    --input: 250 20% 18%;
+    --ring: 270 70% 60%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(270 70% 60%), hsl(250 70% 50%));
+    --gradient-secondary: linear-gradient(135deg, hsl(220 60% 55%), hsl(200 60% 45%));
+    --gradient-background: linear-gradient(180deg, hsl(250 30% 8%), hsl(260 25% 6%));
+    --gradient-card: linear-gradient(145deg, hsl(250 25% 12%), hsl(250 20% 10%));
+    --gradient-accent: linear-gradient(90deg, hsl(270 70% 60%), hsl(45 90% 65%));
+
+    /* Shadows */
+    --shadow-elegant: 0 20px 40px -10px hsl(270 70% 60% / 0.3);
+    --shadow-card: 0 10px 30px -5px hsl(250 30% 4% / 0.5);
+    --shadow-glow: 0 0 40px hsl(270 70% 60% / 0.4);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 1rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background: var(--gradient-background);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+}
+
+@layer components {
+  /* Hero button variants */
+  .btn-hero {
+    @apply bg-gradient-to-r from-primary to-accent text-primary-foreground font-medium px-8 py-3 rounded-full;
+    @apply hover:shadow-[var(--shadow-glow)] transform hover:scale-105;
+    @apply transition-[var(--transition-smooth)] border border-primary/20;
+  }
+
+  .btn-outline-hero {
+    @apply border-2 border-primary text-primary bg-transparent font-medium px-8 py-3 rounded-full;
+    @apply hover:bg-primary hover:text-primary-foreground;
+    @apply transition-[var(--transition-smooth)] hover:shadow-[var(--shadow-elegant)];
+  }
+
+  /* Card variants */
+  .card-glass {
+    @apply bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl;
+    @apply shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elegant)];
+    @apply transition-[var(--transition-smooth)] hover:border-primary/30;
+  }
+
+  .card-gradient {
+    background: var(--gradient-card);
+    @apply border border-border/30 rounded-2xl;
+    @apply shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elegant)];
+    @apply transition-[var(--transition-smooth)] hover:border-primary/30;
+  }
+
+  /* Skill icons */
+  .skill-icon {
+    @apply p-4 rounded-xl bg-gradient-to-br from-primary/20 to-secondary/20;
+    @apply border border-primary/30 hover:border-primary/50;
+    @apply transition-[var(--transition-smooth)] hover:scale-110;
+    @apply hover:shadow-[var(--shadow-glow)];
+  }
+
+  /* Animations */
+  .fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  .slide-up {
+    animation: slideUp 0.8s ease-out;
+  }
+
+  .glow-text {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+@layer utilities {
+  .section-padding {
+    @apply py-20 px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
