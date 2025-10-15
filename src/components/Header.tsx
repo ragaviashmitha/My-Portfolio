@@ -24,7 +24,7 @@ const Header = () => {
 
   const handleDownloadResume = () => {
   window.open(
-    "https://drive.google.com/file/d/1H5Ms5U6jD9aiDHNLtm7Rn0bp3P5S_ocV/view?usp=drive_link",
+    "https://drive.google.com/drive/folders/1VUJt3zJsHcF_8-FPNwzWzqBMhAei2TWS?usp=sharin",
     "_blank"
   );
 };

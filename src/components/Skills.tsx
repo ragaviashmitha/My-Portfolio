@@ -21,7 +21,7 @@ const Skills = () => {
     {
       title: 'Web Development',
       icon: Globe,
-      skills: ['HTML/CSS','React', 'Bootstrap', 'Tailwind CSS'],
+      skills: ['HTML/CSS','React','Node.js','Express.js', 'Bootstrap', 'Tailwind CSS'],
       color: 'from-secondary to-accent'
     },
     {
@@ -43,8 +43,7 @@ const Skills = () => {
     'Tableau Desktop',
     'Java',
     'Python Full Stack',
-    'Artificial Intelligence',
-    'Machine Learning'
+    'Artificial Intelligence',    
   ];
 
   return (

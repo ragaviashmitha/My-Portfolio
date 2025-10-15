@@ -83,7 +83,7 @@ const About = () => {
                     </div>
                     <div className="flex justify-between">
                       <span className="text-muted-foreground">Availability</span>
-                      <span className="font-medium text-accent">Open for Work</span>
+                      <span className="font-medium text-accent">Open to Work</span>
                     </div>
                   </div>
                 </div>
