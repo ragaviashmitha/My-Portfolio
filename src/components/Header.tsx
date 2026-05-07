@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Download } from 'lucide-react';
+import { Menu, X, Download, Moon, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useTheme } from '@/components/theme-provider';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,35 +32,48 @@ const Header = () => {
 };
 
   return (
-    <header className={`fixed w-full top-0 z-50 transition-all duration-300 ${
-      scrolled ? 'bg-card/80 backdrop-blur-md border-b border-border/50' : 'bg-transparent'
-    }`}>
-      <nav className="container-custom">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex-shrink-0">
-            <span className="text-2xl font-bold glow-text">Ashmitha</span>
+    <header className="fixed w-full top-6 z-50 flex justify-center px-4 transition-all duration-300">
+      <nav className={`w-full max-w-5xl rounded-full px-6 py-2 flex items-center justify-between transition-all duration-300 bg-card shadow-[0_0_20px_var(--shadow-card)] border border-border/50`}>
+        
+        {/* Logo */}
+        <div className="flex items-center space-x-2 flex-shrink-0">
+          <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold text-sm tracking-wider shadow-sm">
+            AR
           </div>
+          <span className="text-2xl font-bold text-primary tracking-tight">Ashmitha</span>
+        </div>
 
-          {/* Desktop Navigation */}
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex flex-1 items-center justify-center space-x-8">
+          {navItems.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="text-foreground hover:text-primary transition-colors duration-200 font-semibold text-sm"
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+
+        {/* Action Button & Theme Toggle & Mobile Menu */}
+        <div className="flex items-center space-x-2 sm:space-x-4">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            className="rounded-full text-foreground hover:text-primary hover:bg-card-accent"
+          >
+            {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+          </Button>
+
           <div className="hidden md:block">
-            <div className="ml-10 flex items-center space-x-8">
-              {navItems.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
-                >
-                  {item.label}
-                </a>
-              ))}
-              <Button
-                onClick={handleDownloadResume}
-                className="btn-hero"
-              >
-                <Download className="w-4 h-4 mr-2" />
-                View my Resume
-              </Button>
-            </div>
+            <Button
+              onClick={handleDownloadResume}
+              className="bg-primary hover:bg-primary/90 text-white rounded-full px-6 h-10 font-semibold shadow-md transition-all hover:scale-105"
+            >
+              Resume <span className="ml-2 font-bold">→</span>
+            </Button>
           </div>
 
           {/* Mobile menu button */}
@@ -67,40 +82,39 @@ const Header = () => {
               variant="ghost"
               size="sm"
               onClick={() => setIsOpen(!isOpen)}
-              className="text-foreground"
+              className="text-gray-800 hover:text-primary hover:bg-gray-100 rounded-full"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
           </div>
         </div>
+      </nav>
 
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-card/95 backdrop-blur-md rounded-lg mt-2 border border-border/50">
-              {navItems.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="block px-3 py-2 text-foreground hover:text-primary transition-colors duration-200"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.label}
-                </a>
-              ))}
-              <div className="px-3 py-2">
-                <Button
-                  onClick={handleDownloadResume}
-                  className="btn-hero w-full"
-                >
-                  <Download className="w-4 h-4 mr-2" />
-                  View my Resume
-                </Button>
-              </div>
+      {/* Mobile Navigation Dropdown */}
+      {isOpen && (
+        <div className="absolute top-20 left-4 right-4 md:hidden">
+          <div className="px-4 py-4 space-y-2 bg-white shadow-xl rounded-2xl border border-gray-100 flex flex-col">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="block px-4 py-3 text-gray-800 font-semibold hover:text-primary hover:bg-gray-50 rounded-xl transition-colors duration-200"
+                onClick={() => setIsOpen(false)}
+              >
+                {item.label}
+              </a>
+            ))}
+            <div className="pt-2">
+              <Button
+                onClick={handleDownloadResume}
+                className="bg-primary hover:bg-primary/90 text-white rounded-full w-full h-12 font-semibold shadow-md"
+              >
+                View my Resume <span className="ml-2 font-bold">→</span>
+              </Button>
             </div>
           </div>
-        )}
-      </nav>
+        </div>
+      )}
     </header>
   );
 };

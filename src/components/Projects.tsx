@@ -5,46 +5,60 @@ import { Button } from '@/components/ui/button';
 const Projects = () => {
   const projects = [
     {
-      title: 'Burger Billing System',
-      description: 'A comprehensive billing system built with Python featuring pricing calculations,  and efficient order handling. Includes user-friendly interface and receipt generation.',
-      tech: ['Python', 'File Handling'],
-      icon: Code,
-      category: 'Software Development',
-      highlights: [ 'Order Processing', 'Receipt Generation']
-    },
-    {
-      title: 'Sentiment Analysis of Tweets',
-      description: 'Advanced NLP and machine learning model for analyzing and classifying tweet sentiments. Implements natural language processing techniques to determine emotional tone of social media content.',
-      tech: ['Python', 'NLP', 'Machine Learning', 'Data Processing'],
+      title: 'Online Explainable Multi-Class Self-Healing Intrusion Detection System',
+      description: 'Designed a behavioral graph from anonymized network traffic and applied Graph Neural Networks (Graph Attention Network) for intrusion detection. Utilized clustering techniques for behavior modeling and classification, and integrated Explainable AI (XAI) to ensure transparency.',
+      tech: ['Graph Neural Networks', 'XAI', 'Python', 'ML', 'Clustering'],
       icon: Brain,
       category: 'AI/ML',
-      highlights: ['NLP Processing', 'ML Classification', 'Data Analysis']
+      highlights: ['Intrusion Detection', 'Explainable AI', 'Behavioral Graph Analysis']
     },
     {
-      title: 'Personal Portfolio Website',
-      description: 'A personal portfolio website showcasing my projects, skills, and experience. Built with modern web technologies and responsive design principles.',
-      tech: ['HTML', 'CSS', 'JavaScript', 'React', 'Tailwind CSS'],
+      title: 'Intelligent Disease Prediction and Monitoring System',
+      description: 'Built an AI/ML system to use real healthcare data and patient inputs. Trained models for accurate predictions. Developed a website dashboard for real-time health monitoring and risk assessment.',
+      tech: ['AI/ML', 'Python', 'Real-time Monitoring', 'Dashboard'],
+      icon: Brain,
+      category: 'AI/ML',
+      highlights: ['Disease Prediction', 'Real-time Dashboard', 'Risk Assessment']
+    },
+    {
+      title: 'Investment Management Company Website',
+      description: 'Developed a responsive Investment Management website with secure authentication, portfolio tracking, and interactive dashboards, ensuring a seamless user experience.',
+      tech: ['React', 'Authentication', 'Portfolio Tracking', 'Interactive Dashboards'],
       icon: Code,
       category: 'Web Development',
-      highlights: ['Responsive Design',  'User Experience']
+      highlights: ['Secure Authentication', 'Portfolio Tracking', 'Responsive Design']
+    },
+    {
+      title: 'Pothole Detection',
+      description: 'A high-performance, single-file web application for detecting potholes from road surface images or live webcam feeds. This version is completely self-contained and communicates directly with the Roboflow API.',
+      tech: ['Computer Vision', 'Web Development', 'Roboflow API'],
+      icon: Brain,
+      category: 'AI & Web Development',
+      highlights: ['Live Detection', 'API Integration', 'Self-contained']
     }
-
   ];
 
   const internships = [
     {
-      organization: 'Internz Learn',
-      role: 'AI & Data Science Intern',
-      duration: '30 days',
-      description: 'Gained hands-on experience in artificial intelligence and data science methodologies, working on real-world datasets and implementing ML algorithms.',
-      skills: ['Data Analysis', 'Machine Learning', 'Python']
+      organization: 'HUROMAT',
+      role: 'Freelance Full Stack and AI Developer',
+      duration: 'Freelance',
+      description: 'Delivered freelance full stack and AI solutions, including frontend, backend, server management, and Docker-based deployment. Built scalable applications and integrated APIs.',
+      skills: ['Full Stack', 'AI Solutions', 'Docker', 'API Integration']
     },
     {
-      organization: 'Pantech E-Learning',
-      role: 'Python Full Stack Developer Intern',
-      duration: '15 days',
-      description: 'Developed full-stack web applications using Python, learned modern web development practices and database integration.',
-      skills: ['Python', 'Web Development', 'Database Management', 'Full Stack']
+      organization: 'HUROMATA',
+      role: 'Full Stack Development Intern',
+      duration: '3 Months',
+      description: 'Developed full stack web applications with frontend, backend, and API integration. Improved performance, handled databases, and ensured smooth end-to-end functionality.',
+      skills: ['Full Stack', 'API Integration', 'Database Management', 'Performance Optimization']
+    },
+    {
+      organization: 'HACKBOX',
+      role: 'AI & Software Development Intern',
+      duration: '1 Year',
+      description: 'Developed web applications and AI-based solutions with responsive frontend design and API integration. Improved performance and implemented ML features.',
+      skills: ['AI', 'Software Development', 'Responsive Design', 'ML Features', 'Git']
     }
   ];
 
@@ -56,14 +70,13 @@ const Projects = () => {
             Projects & <span className="glow-text">Experience</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            A showcase of my technical projects and professional internship experiences, 
+            A showcase of my technical projects and professional internship experiences,
             demonstrating practical application of AI, web development, and software engineering skills.
           </p>
         </div>
 
         {/* Projects */}
         <div className="mb-20">
-          <h3 className="text-3xl font-bold text-center mb-12">Featured Projects</h3>
           <div className="grid lg:grid-cols-2 gap-8">
             {projects.map((project, index) => (
               <Card key={index} className="card-gradient slide-up hover:scale-105 transition-all duration-300 group">
@@ -82,33 +95,10 @@ const Projects = () => {
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <p className="text-muted-foreground leading-relaxed">{project.description}</p>
-                  
-                  {/* Key Highlights */}
-                  <div>
-                    <h4 className="font-semibold mb-3">Key Features</h4>
-                    <div className="grid grid-cols-1 gap-2">
-                      {project.highlights.map((highlight, idx) => (
-                        <div key={idx} className="flex items-center space-x-2">
-                          <TrendingUp className="w-4 h-4 text-secondary" />
-                          <span className="text-sm">{highlight}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  {/* Technologies */}
-                  <div>
-                    <h4 className="font-semibold mb-3">Technologies Used</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {project.tech.map((tech, idx) => (
-                        <span key={idx} className="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm font-medium border border-primary/30">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
 
-                 
+
+
+
                 </CardContent>
               </Card>
             ))}
@@ -137,17 +127,7 @@ const Projects = () => {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p className="text-muted-foreground leading-relaxed">{internship.description}</p>
-                  
-                  <div>
-                    <h4 className="font-semibold mb-3">Skills Developed</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {internship.skills.map((skill, idx) => (
-                        <span key={idx} className="px-3 py-1 bg-accent/20 text-accent rounded-full text-sm font-medium border border-accent/30">
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+
                 </CardContent>
               </Card>
             ))}

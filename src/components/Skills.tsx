@@ -15,35 +15,39 @@ const Skills = () => {
     {
       title: 'Programming Languages',
       icon: Code2,
-      skills: ['Java', 'Python', 'C/C++', 'JavaScript', 'SQL'],
+      skills: ['Java', 'Python', 'C/C++', 'SQL'],
       color: 'from-primary to-secondary'
     },
     {
       title: 'Web Development',
       icon: Globe,
-      skills: ['HTML/CSS','React','Node.js','Express.js', 'Bootstrap', 'Tailwind CSS'],
+      skills: ['HTML', 'CSS', 'JavaScript', 'React.js', 'Node.js', 'Tailwind CSS', 'DOM manipulation'],
       color: 'from-secondary to-accent'
     },
     {
       title: 'Tools & Technologies',
       icon: Terminal,
-      skills: ['Git', 'GitHub', 'VS Code', 'Tableau', 'Power BI', 'MS Office'],
+      skills: ['Git', 'GitHub', 'Visual Studio Code', 'Canva', 'Figma', 'AI Tools'],
       color: 'from-accent to-primary'
     },
     {
-      title: 'AI/ML Libraries',
-      icon: Brain,
-      skills: ['TensorFlow', 'Pandas', 'NumPy', 'Matplotlib'],
+      title: 'Data Science',
+      icon: BarChart3,
+      skills: ['Tableau', 'Power BI', 'NumPy', 'Pandas', 'Matplotlib'],
       color: 'from-primary to-accent'
+    },
+    {
+      title: 'Artificial Intelligence',
+      icon: Brain,
+      skills: ['Machine Learning (ML)'],
+      color: 'from-secondary to-primary'
     }
   ];
 
   const certifications = [
-    'Web Development',
-    'Tableau Desktop',
     'Java',
-    'Python Full Stack',
-    'Artificial Intelligence',    
+    'Artificial Intelligence',
+    'FullStack Development',
   ];
 
   return (
@@ -60,23 +64,27 @@ const Skills = () => {
         </div>
 
         {/* Skills Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 max-w-5xl mx-auto">
           {skillCategories.map((category, index) => (
-            <Card key={index} className="card-glass slide-up hover:scale-105 transition-transform duration-300">
-              <CardHeader className="text-center">
-                <div className={`w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br ${category.color} p-4 mb-4`}>
+            <Card key={index} className="card-glass slide-up group hover:scale-105 transition-all duration-500 overflow-hidden min-h-[220px] flex flex-col items-center justify-center cursor-default relative">
+              <CardHeader className="text-center transition-all duration-500 group-hover:-translate-y-4">
+                <div className={`w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br ${category.color} p-4 mb-4 shadow-lg group-hover:shadow-primary/20 transition-all duration-500`}>
                   <category.icon className="w-8 h-8 text-white" />
                 </div>
-                <CardTitle className="text-lg">{category.title}</CardTitle>
+                <CardTitle className="text-xl font-bold tracking-tight">{category.title}</CardTitle>
               </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  {category.skills.map((skill, skillIndex) => (
-                    <div key={skillIndex} className="flex items-center space-x-3">
-                      <div className="w-2 h-2 bg-primary rounded-full"></div>
-                      <span className="text-sm">{skill}</span>
-                    </div>
-                  ))}
+              
+              <CardContent className="absolute inset-0 flex flex-col bg-card/95 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 p-6 overflow-hidden">
+                <div className="w-full flex flex-col h-full">
+                  <h4 className="text-primary font-bold text-center mb-4 border-b border-primary/20 pb-2 shrink-0">{category.title}</h4>
+                  <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar space-y-3">
+                    {category.skills.map((skill, skillIndex) => (
+                      <div key={skillIndex} className="flex items-center space-x-3 slide-up" style={{ animationDelay: `${skillIndex * 50}ms` }}>
+                        <div className="w-2 h-2 bg-primary rounded-full shadow-[0_0_8px_var(--primary-glow)] shrink-0"></div>
+                        <span className="text-sm font-medium">{skill}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </CardContent>
             </Card>

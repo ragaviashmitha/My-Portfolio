@@ -15,9 +15,6 @@ const Hero = () => {
                 <h1 className="text-5xl lg:text-6xl font-bold">
                   <span className="glow-text">Ashmitha</span> Ragavi S
                 </h1>
-                <h2 className="text-2xl lg:text-3xl font-semibold text-secondary">
-                  Aspiring AI & Web Developer
-                </h2>
               </div>
               
               <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
